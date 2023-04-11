@@ -7,7 +7,6 @@ sys.path.append(os.path.dirname(os.path.realpath(sys.argv[0])) + '/utils')
 import cv2
 import glob
 import mmcv
-from models import ResUNet
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
