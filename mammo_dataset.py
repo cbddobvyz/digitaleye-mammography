@@ -11,12 +11,11 @@ import os
 @DATASETS.register_module()
 class MammoDataset(CustomDataset):
     
-    # CLASSES = ('MASS', )
-    class_file = open('/workspace/notebooks/new_mammo_repo/classes.txt', 'r')
+    class_file = open(os.path.join(os.path.abspath("."), 'classes.txt'), 'r')
     class_names = class_file.read()
     CLASSES = tuple(class_names.split(','))
     class_file.close()
-    os.remove('/workspace/notebooks/new_mammo_repo/classes.txt')
+    os.remove(os.path.join(os.path.abspath("."), 'classes.txt'))
 
     def load_annotations(self, ann_file):
         ann_list = mmcv.list_from_file(ann_file)

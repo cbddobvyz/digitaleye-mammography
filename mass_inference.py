@@ -24,7 +24,7 @@ parser.add_argument('--enable_ensemble', type=str, help='Example: --enable_ensem
 parser.add_argument('--img_path', type=str, help='Example: --PATH, Purpose: It is for getting image folder path', required=True, default=None)
 parser.add_argument('--annotation_path', type=str, help='Example: --PATH, Purpose: It is for getting annotation .txt file path', required=False, default=None)
 parser.add_argument('--nms_iou_threshold', type=float, help='Example: --nms_iou_threshold 0.1', required=False, default=0.1)
-parser.add_argument('--confidence_threshold', type=float, help='Example: --confidence_threshold 0.05', required=False, default=0.2)
+parser.add_argument('--confidence_threshold', type=float, help='Example: --confidence_threshold 0.2', required=False, default=0.2)
 parser.add_argument('--ap_threshold', type=float, help='Example: --ap_threshold 0.1', required=False, default=0.1)
 
 args = parser.parse_args()
@@ -54,54 +54,10 @@ config_paths, model_file_paths, model_result_paths, selected_model_names = get_c
 
 print(results_dir, 'directory created...')
 
-def get_result_metrics(results, config_path, img_list, ann_list, label_names, selected_model, ap_threshold, img_path, annot_path, confidence_threshold, results_dict):
-    """
-    Applying ensemble to all choosen models
-
-    Parametreler
-    ---------- 
-    results: list
-        model detections
-    config_paths : list
-        Choosen models' config paths
-    img_list: list
-        Image file names' list
-    ann_list: list
-        Image file names' list
-    label_names : list
-        Contains Classification [MALIGN, BENIGN] or Detection [MASS] labels.
-    selected_model: list
-        Choosen model's name
-    ap_threshold : float
-        TP iou threshold
-    img_path : str
-        Image path
-    annot_path : str
-        Annotation path
-    confidence_threshold : float
-        score threshold
-    results_dict: dict
-        dictionary for result metrics
-   
-    Returns
-    -------
-    results_dict: dict
-        dictionary for result metrics
-
-    """
-    class_size = len(label_names)
-    recalls, fppis = get_recall_fppi(config_path, ann_list, img_list, results, ap_threshold, 100, label_names)
-    # recall_list.append(recalls)
-    # fppis_list.append(fppis)
-    num_gts, num_dets, ap, mAP = get_result_dict(results, ann_list, ap_threshold, class_size)
-    model_evals(config_path, results, ap_threshold, img_path, annot_path, class_size)
-    results_dict[selected_model] = [[num_gts], [num_dets], recalls[0], fppis[0], ap, confidence_threshold, mAP]
-    return results_dict, recalls, fppis
-
 if args.segment_breast =='True':
     seg_img_path = os.path.join(results_dir, 'breast_segmentation')
     print('Image files feeding to segmentation model and segmentation results will be saved on', seg_img_path, 'directory.'),
-    crop_coordinates, img_shapes = apply_segmentation(seg_img_path, args.img_path)
+    crop_coordinates, img_shapes = apply_segmentation(seg_img_path, args.img_path, device)
     img_list, ann_list = control_annot_path(args.annotation_path, seg_img_path)
     if args.annotation_path:
         annot_path = get_annot_path(sorted(img_list), ann_list, img_shapes, crop_coordinates, seg_img_path)

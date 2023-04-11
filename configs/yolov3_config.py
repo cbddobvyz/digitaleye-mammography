@@ -102,26 +102,26 @@ data = dict(
         type='MammoDataset',
         classes=('BIRADS45', 'BIRADS12'),
         ann_file=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/5_Fold/annot_train.txt',
+        ' ',
         img_prefix=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/5_Fold/Train/',
+        ' ',
         pipeline=train_pipeline
         ),
     val=dict(
         type='MammoDataset',
         ann_file=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/5_Fold/annot_val.txt',
+        ' ',
         img_prefix=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/5_Fold/Val/',
+        ' ',
         
         classes=('BIRADS45', 'BIRADS12'),
         pipeline=test_pipeline),
     test=dict(
         type='MammoDataset',
         ann_file=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/annot_test.txt',
+        ' ',
         img_prefix=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/Test/',
+        ' ',
         
         classes=('BIRADS45', 'BIRADS12'),
         pipeline=test_pipeline)
@@ -147,13 +147,10 @@ log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 custom_hooks = [dict(type='NumClassCheckHook')]
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = '/workspace/notebooks/mmdetection/checkpoints/yolov3_d53_mstrain-608_273e_coco_20210518_115020-a2c3acb8.pth'
+load_from = 'yolov3_d53_mstrain-608_273e_coco_20210518_115020-a2c3acb8.pth'
 resume_from = None
 workflow = [('train', 1)]
 custom_imports = dict(imports=['mammo_dataset'], allow_failed_imports=False)
 dataset_type = 'MammoDataset'
-# img_norm_cfg = dict(
-#     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 
 classes = ('BIRADS45', 'BIRADS12')
-work_dir = '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/model_results/5_Fold/results_yolov3'

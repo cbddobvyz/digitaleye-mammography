@@ -33,7 +33,7 @@ from seg_utils import *
 
 warnings.filterwarnings("ignore")
 
-# get_result_array düzelt degiskenleri
+
 def get_choosen_models(current_dir, results_dir, model_names):
     """
     Loading desired models' requirements
@@ -65,7 +65,7 @@ def get_choosen_models(current_dir, results_dir, model_names):
     model_file_paths = []
     model_result_paths = []
     conf_paths = sorted(glob.glob(os.path.join(current_dir, 'configs', '*.py')))
-    model_paths = sorted(glob.glob(os.path.join(current_dir, 'models', '*.pth')))
+    # model_paths = sorted(glob.glob(os.path.join(current_dir, 'models', '*.pth')))
     model_dict = {'0': 'ATSS',
                   '1': 'CASCADE R-CNN',
                   '2': 'DEFORMABLE DETR',
@@ -81,13 +81,15 @@ def get_choosen_models(current_dir, results_dir, model_names):
     selected_model_names = []
     for i in model_names:
         config_paths.append(conf_paths[int(i)])
-        model_file_paths.append(model_paths[int(i)])
+        model_name = os.path.basename(conf_paths[int(i)]).split('_config')[0]
+        model_path = os.path.join(current_dir, 'models', model_name+".pth")
+        model_file_paths.append(model_path)
         try:
             selected_model_names.append(model_dict[i])
         except KeyError:
             print("KeyError: model_enum parameter range must be between 0 and 10...")
             exit(-1)
-        path_res = os.path.join(results_dir, os.path.basename(model_paths[int(i)]).split('.')[0])
+        path_res = os.path.join(results_dir, model_name)
         model_result_paths.append(path_res)
         if not os.path.exists(path_res):
             os.makedirs(path_res)
@@ -154,7 +156,7 @@ def control_annot_path(annot_path, img_path):
     return img_list, ann_list
 
 
-def breast_segmentation(seg_model, image):
+def breast_segmentation(seg_model, image, device):
     """
     Extracts breast region from given Image with segmentation model.
     
@@ -164,6 +166,8 @@ def breast_segmentation(seg_model, image):
         Developed segmentation model
     image : array
         Image
+    device : str
+        set cuda device 
     
     Returns
     -------
@@ -183,7 +187,7 @@ def breast_segmentation(seg_model, image):
     seg_img = seg_img.reshape(1,512,512,1)
     seg_img = np.moveaxis(seg_img, 3, 1)
     seg_img = torch.from_numpy(seg_img).float()
-    seg_img = seg_img.cuda()
+    seg_img = seg_img.to(device)
     seg_output = seg_model(seg_img)
     output = output_to_mask(seg_output)
     abc = flood_fill(output[0][0])
@@ -206,7 +210,7 @@ def breast_segmentation(seg_model, image):
     return crop_img, crop_coordinate
 
 
-def apply_segmentation(seg_img_path, img_path):
+def apply_segmentation(seg_img_path, img_path, device):
     """
     Extracts breast region from given Image with segmentation model.
     
@@ -216,6 +220,8 @@ def apply_segmentation(seg_img_path, img_path):
         Segmentation image path
     img_path : array
         Image
+    device : str
+        set cuda device
     
     Returns
     -------
@@ -228,14 +234,14 @@ def apply_segmentation(seg_img_path, img_path):
     """
     
     img_list = sorted(glob.glob(os.path.join(img_path, '*')))
-    path = os.path.join(os.path.sep, 'workspace','notebooks','new_mammo_repo','utils','ResUNet_breast.pth')
-    seg_model = torch.load(path)
+    path = os.path.join(os.path.sep, os.path.abspath("."),'models','ResUNet_breast.pth')
+    seg_model = torch.load(path, map_location=torch.device(device))
     print('Applying segmentation to images')
     crop_coordinates = []
     img_shapes = []
     for j in tqdm(range(len(img_list)), desc='Breast Segmentations'):
         image = cv2.imread(img_list[j])
-        image, crop_coordinate = breast_segmentation(seg_model, image)
+        image, crop_coordinate = breast_segmentation(seg_model, image, device)
         img_file_name = os.path.basename(img_list[j])
         cv2.imwrite(os.path.join(seg_img_path, img_file_name), image)
         crop_coordinates.append(crop_coordinate)
@@ -403,7 +409,7 @@ def write_labels_to_txt(label_names):
 
     """
     
-    f = open(os.path.join(os.path.sep, 'workspace', 'notebooks', 'new_mammo_repo', 'classes.txt'), 'w')
+    f = open(os.path.join(os.path.sep, os.path.abspath("."), 'classes.txt'), 'w')
     if len(label_names) == 1:
         f.write('MASS')
     elif len(label_names) == 2:
@@ -1435,6 +1441,51 @@ def plot_froc(recalls, fppis, faucs, label_names, model_names, figsize=(10,8), d
             plt.savefig(os.path.join(save_fig_path, label_names[k] + "_froc.png"))
             print('--> ' + label_names[k] + "'s FROC figure saved...")
             plt.clf()
+
+
+def get_result_metrics(results, config_path, img_list, ann_list, label_names, selected_model, ap_threshold, img_path, annot_path, confidence_threshold, results_dict):
+    """
+    Applying ensemble to all choosen models
+
+    Parametreler
+    ---------- 
+    results: list
+        model detections
+    config_paths : list
+        Choosen models' config paths
+    img_list: list
+        Image file names' list
+    ann_list: list
+        Image file names' list
+    label_names : list
+        Contains Classification [MALIGN, BENIGN] or Detection [MASS] labels.
+    selected_model: list
+        Choosen model's name
+    ap_threshold : float
+        TP iou threshold
+    img_path : str
+        Image path
+    annot_path : str
+        Annotation path
+    confidence_threshold : float
+        score threshold
+    results_dict: dict
+        dictionary for result metrics
+   
+    Returns
+    -------
+    results_dict: dict
+        dictionary for result metrics
+
+    """
+    class_size = len(label_names)
+    recalls, fppis = get_recall_fppi(config_path, ann_list, img_list, results, ap_threshold, 100, label_names)
+    # recall_list.append(recalls)
+    # fppis_list.append(fppis)
+    num_gts, num_dets, ap, mAP = get_result_dict(results, ann_list, ap_threshold, class_size)
+    model_evals(config_path, results, ap_threshold, img_path, annot_path, class_size)
+    results_dict[selected_model] = [[num_gts], [num_dets], recalls[0], fppis[0], ap, confidence_threshold, mAP]
+    return results_dict, recalls, fppis
 
     
 

@@ -3,17 +3,13 @@ log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 custom_hooks = [dict(type='NumClassCheckHook')]
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = '/workspace/notebooks/mmdetection/checkpoints/fcos_x101_64x4d_fpn_gn-head_mstrain_640-800_2x_coco-ede514a8.pth'
+load_from = 'fcos_x101_64x4d_fpn_gn-head_mstrain_640-800_2x_coco-ede514a8.pth'
 resume_from = None
 workflow = [('train', 1)]
-# custom_imports = dict(imports=['mammo_dataset'], allow_failed_imports=False)
+custom_imports = dict(imports=['mammo_dataset'], allow_failed_imports=False)
 dataset_type = 'MammoDataset'
-# img_norm_cfg = dict(
-#     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 
 classes = ('BIRADS45', 'BIRADS12')
-work_dir = '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/model_results/1_Fold/results_fcos'
-# gpu_ids = range(0, 4)
 
 data = dict(
     samples_per_gpu=4,
@@ -22,9 +18,9 @@ data = dict(
         type='MammoDataset',
         classes=('BIRADS45', 'BIRADS12'),
         ann_file=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/1_Fold/annot_train.txt',
+        ' ',
         img_prefix=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/1_Fold/Train/',
+        ' ',
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(type='LoadAnnotations', with_bbox=True),
@@ -48,9 +44,9 @@ data = dict(
     val=dict(
         type='MammoDataset',
         ann_file=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/1_Fold/annot_val.txt',
+        ' ',
         img_prefix=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/1_Fold/Val/',
+        ' ',
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(
@@ -76,9 +72,9 @@ data = dict(
     test=dict(
         type='MammoDataset',
         ann_file=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/annot_test.txt',
+        ' ',
         img_prefix=
-        '/workspace/notebooks/Mammography_Benchmark_Article/KETEM_proven_pathology/Test/',
+        ' ',
         pipeline=[
             dict(type='LoadImageFromFile'),
             dict(
@@ -169,5 +165,4 @@ model = dict(
         min_bbox_size=0,
         score_thr=0.05,
         nms=dict(type='nms', iou_threshold=0.5),
-        # nms=dict(type='soft_nms', iou_threshold=0.1, min_score=0.05),
         max_per_img=100))
