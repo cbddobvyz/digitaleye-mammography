@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_enum', nargs='+', help='Example: --model_enum 0 or 0 1 2, Purpose: 0: ATSS, 1: Cascade R-CNN, 2: DEFORMABLE DETR, 3: DETR, 4: DOUBLE HEAD R-CNN, 5: DYNAMIC R-CNN, 6: FASTER R-CNN, 7: FCOS, 8: RETINA NET, 9: VARIFOCAL NET, 10: YOLOv3', required=True)
-parser.add_argument('--device', type=str, help='Example: --device cuda:0', required=False, default='cuda')
+parser.add_argument('--device', type=str, help='Example: --device cuda:0', required=False, default='cpu')
 parser.add_argument('--classify_mass', type=str, help='Example: --classify_mass True or False, Purpose: It is for doing classificiation', required=False, default='True') 
 parser.add_argument('--segment_breast', type=str , help='Example: --segment_breast True or False, Purpose: It is for applying breast segmentation model', required=False, default='True') 
 parser.add_argument('--enable_ensemble', type=str, help='Example: --enable_ensemble True or False, Purpose: It is for applying ensemble strategy to detections', required=False, default='False')
@@ -78,7 +78,7 @@ if ann_list:
             annot_classes.append(int(b[-1]))
     annot_classes = sorted(list(set(annot_classes)))
     if len(label_names) != len(annot_classes):
-        print('According to class size, You must prepare annotation path or set --classification parameter. You give'
+        print('According to class size, You must prepare annotation path or set --classu must give more than one model for applying ensemble stification parameter. You give'
              , len(annot_classes), 'classes in annotation file and you set --classification parameter as', args.classification, 'it causes not having same size of annotation and label classes. Label classes length and annotation classes length must be same.')
         parser.print_help()
         exit(-1)
@@ -86,8 +86,6 @@ if ann_list:
 write_labels_to_txt(label_names)    
 
 model_predicts = []
-recall_list = []
-fppis_list = []
 df_dict = {}
 for i in range(len(config_paths)): 
     print('*'*20, selected_model_names[i], 'model evaluation processes are starting...', '*'*20)
@@ -95,11 +93,8 @@ for i in range(len(config_paths)):
     results = get_nms_results(results, img_list, class_size, args.nms_iou_threshold, scr_thr=args.confidence_threshold)
     if class_size == 2:
         results = filter_results(results)
-    #results degisecek
     if ann_list:
-        df_dict, recalls, fppis = get_result_metrics(results, config_paths[i], img_list, ann_list, label_names, selected_model_names[i], args.ap_threshold, args.img_path, annot_path, args.confidence_threshold, df_dict)
-        recall_list.append(recalls)
-        fppis_list.append(fppis)
+    	model_evals(config_paths[i], results, args.ap_threshold, args.img_path, annot_path, class_size)
     save_results(img_list, ann_list, results, label_names, model_result_paths[i])
     
     if args.enable_ensemble == 'True':
@@ -118,18 +113,9 @@ if len(model_predicts)!=0:
     if class_size == 2:
         ensemble_result = filter_results(ensemble_result)
     if ann_list:
-        df_dict, recalls, fppis = get_result_metrics(ensemble_result, config_paths[i], img_list, ann_list, label_names, 'ENSEMBLE', args.ap_threshold, args.img_path, annot_path, args.confidence_threshold, df_dict)
-        recall_list.append(recalls)
-        fppis_list.append(fppis)
+    	model_evals(config_paths[0], ensemble_result, args.ap_threshold, args.img_path, annot_path, class_size)
     save_results(img_list, ann_list, ensemble_result, label_names, ensemble_result_path)
     selected_model_names.append('ENSEMBLE')
-
-
-if ann_list:
-    faucs = get_faucs(recall_list, fppis_list, class_size)
-    lines = plot_froc(recall_list, fppis_list, faucs, label_names, selected_model_names, figsize=(15,12), dpi=100, save_fig_path=results_dir) #save
-    save_metrics_to_csv(results_dir, df_dict, label_names)
-    
 
 end_time = time.time()
 
