@@ -102,7 +102,3 @@ Mamografi görüntülerinizi içeren verisetlerinizi paylaştığımız modeller
 ## Acknowledgements
     
     Bu çalışma CBDDO Mamografi Görüntülerinden Meme Kanseri Tespiti projesi adı altında geliştirilmiştir.
-    
-<p align="center">
-    <img src="https://cbddo.gov.tr/assets/img/footerlogo_en.png", alt="logo">
-</p>
