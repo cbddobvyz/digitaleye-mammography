@@ -68,8 +68,8 @@ Results and models are available in the below.
 | <b> ENSEMBLE of BEST 3 MODELS <br> ATSS, DEDETR, FCOS | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.958 <br> 0.968 | 0.575 <br> 1.020 | 0.937 <br> 0.922 | 0.929 | --- |
 | <b> ENSEMBLE of ALL MODELS | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.953 <br> 0.971 | 0.573 <br> 1.033 | 0.928 <br> 0.918 | 0.923 | --- |
 <p align="left">
-  <img src="docs/12_v4.png" width="500" />
-  <img src="docs/45_v4.png" width="500" /> 
+  <img src="docs/12_v4.png" width="350" />
+  <img src="docs/45_v4.png" width="350" /> 
 </p>    
 
 ## **Installation**
