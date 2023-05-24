@@ -102,55 +102,71 @@ The parameters for running the DEM toolkit in the terminal are provided below.
     
 ```--device:``` running device *(Optional Parameter, Default: 'cpu')*
     
-```--classify_mass:``` mass classification flag *(Optional Parameter, Default: True)*
+```--classify_mass:``` mass classification flag, if True it classifies mass as benign or malignant otherwise only mass detection performs *(Optional Parameter, Default: True)*
     
-```--segment_breast: ``` Mamografi görüntülerinde meme bölgesine odaklanılması için segmentasyon modelinin çalışmasını ifade eder. *(Optional Parameter, Default True olarak setlenmiştir.)*
+```--segment_breast: ``` breast segmentation for pre-processing *(Optional Parameter, Default: True)*
     
-```--enable_ensemble: ``` Modellerin ürettiği sonuçlara ensemble uygulanıp uygulanamayacağını ifade eder. *(Optional Parameter, Default  False olarak setlenmiştir.)*
+```--enable_ensemble: ``` applies ensemble *(Optional Parameter, Default: False)*
 
-```--annotation_path: ``` Verilen mamografi görüntüleri için ground truth annotation yolunu ifade eder. *(Optional Parameter, Default None olarak setlenmiştir.)* 
+```--annotation_path: ``` annotation path for test images *(Optional Parameter, Default: None)* 
     
-```--nms_iou_threshold: ``` Model çıktılarına NMS uygulanması için gerekli IoU değerini ifade eder. (Optional Parameter, Default 0.1 olarak setlenmiştir.)*
+```--nms_iou_threshold: ``` applies nms threshold to model results for post-processing (Optional Parameter, Default: 0.1)*
     
-```--confidence_threshold: ``` Model çıktılarına skor eliminasyonu için gerekli skor değerini ifade eder. (Optional Parameter, Default 0.05 olarak setlenmiştir.)* 
+```--confidence_threshold: ``` applies confidence threshold to model results for post-processing (Optional Parameter, Default: 0.05)* 
     
-```--ap_threshold: ``` Model çıktılarının ground truth ile kesişim eşik değerinin TP olarak değerlendirilmesi için gerekli olan IoU değerini ifade eder. *(Optional Parameter, Default 0.1 olarak setlenmiştir.)* 
+```--ap_threshold: ``` IoU threshold for determining prediction as TP (True Positive) *(Optional Parameter, Default: 0.1)* 
 
-### KULLANIM ÖRNEKLERİ    
+### **Usage Examples**
 
-Mamografi görüntülerinizi içeren verisetlerinizi paylaştığımız modeller üzerinde test etmek için sunduğumuz kullanım senaryolarını aşağıdan inceleyebilirsiniz. 
+The usage scenarios are shown below.
 
 * Model tahmini sonuçları görsellenir ve kaydedilir.
 
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH}```
+```bash
+mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH}
+```
 
 * Mamografi görüntüleri, meme segmentasyon modeli ile segmente edilir, nesne tespit modeline girdi olarak verilir, sonuçlar görsellenir ve kaydedilir.
 
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --segment_breast ${BOOLEAN}```    
+```bash 
+mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --segment_breast ${BOOLEAN}
+```    
 
 * Model tahmini sonuçları ground truth bilgileri ile birlikte görsellenir ve  kaydedilir.
 
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --annotation_path ${ANNOTATION_PATH}```
+```bash 
+mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --annotation_path ${ANNOTATION_PATH}
+```
 
 * Kitle tespiti veya sınıflandırılması seçimi yapılması
     
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --classify_mass ${BOOLEAN}``` 
+```bash 
+mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --classify_mass ${BOOLEAN}
+``` 
 
 * Modellerin tahmini ve ensemble sonuçları görsellenir ve kaydedilir.
     
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS}--img_path ${IMAGE_FOLDER_PATH} --enable_ensemble ${BOOLEAN}```
+```bash
+mass_inference.py --model_enum ${MODEL_NUMBERS}--img_path ${IMAGE_FOLDER_PATH} --enable_ensemble ${BOOLEAN}
+```
   
 * Model çıktılarına verilen IoU eşik değerinde NMS uygulanır. Model sonuçları görsellenir ve kaydedilir.
 
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --nms_iou_threshold ${FLOAT}```
+```bash
+mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --nms_iou_threshold ${FLOAT}
+```
 
 * Model çıktılarına verilen confidence eşik değerinde eliminasyon yapılır. Model sonuçları görsellenir ve kaydedilir.
     
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --confidence_threshold ${FLOAT}```
+```bash
+mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --confidence_threshold ${FLOAT}
+```
 
 * TP olarak kabul edilecek IoU eşik değeri seçilir. Model çıktı metrikleri bu parametre ile hesaplanır.
 
-```python3 mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --annotation_path ${ANNOTATION_PATH} --ap_threshold ${FLOAT}```
+```bash
+mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --annotation_path ${ANNOTATION_PATH} --ap_threshold ${FLOAT}
+```
 
 ## License
       
