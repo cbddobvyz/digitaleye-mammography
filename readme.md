@@ -9,6 +9,7 @@
 <div align="center">
 <p align="center">
   <a href="https://cbddo.gov.tr/en/projects/digital-eye-project/">Website</a> •
+  <a href="#installation">Installation</a> •
   <a href="#getting-started">Getting Started</a> •
   <a href="#implemented-model-architectures">Benchmarks</a> •
   <a href="#community">Community</a> •
