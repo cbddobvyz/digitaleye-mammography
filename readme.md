@@ -118,54 +118,23 @@ The parameters for running the DEM toolkit in the terminal are provided below.
 
 ### **Usage Examples**
 
-The usage scenarios are shown below.
+Some of the usage examples are shown below.
 
-* Model tahmini sonuçları görsellenir ve kaydedilir.
-
+* Only mass detection using DETR, RETINANET and YOLOv3 models with default parameters given test images.
+  
 ```bash
-mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH}
+python mass_inference.py --model_enum 3 8 10 --img_path test/img_paths/ --classify_mass False
 ```
-
-* Mamografi görüntüleri, meme segmentasyon modeli ile segmente edilir, nesne tespit modeline girdi olarak verilir, sonuçlar görsellenir ve kaydedilir.
+* Mass classification and comparison against ground truth objects are performed on non-breast segmented images using ATSS, CASCADE R-CNN, and FASTER R-CNN models with various thresholds including non-maximum suppression (NMS), confidence, and average precision (AP).
 
 ```bash 
-mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --segment_breast ${BOOLEAN}
+mass_inference.py --model_enum 0 6 1 --img_path test/imgs_path/ --segment_breast False --annotation_path test/annot_path.txt --nms_iou_threshold 0.25 --confidence_threshold 0.5 --ap_threshold 0.1
 ```    
 
-* Model tahmini sonuçları ground truth bilgileri ile birlikte görsellenir ve  kaydedilir.
+* Mass classification and model ensemble using DEFORMABLE DETR, DOUBLEHEAD R-CNN, DYNAMIC R-CNN, FCOS, VARIFOCAL NET models with various thresholds.
 
 ```bash 
-mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --annotation_path ${ANNOTATION_PATH}
-```
-
-* Kitle tespiti veya sınıflandırılması seçimi yapılması
-    
-```bash 
-mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --classify_mass ${BOOLEAN}
-``` 
-
-* Modellerin tahmini ve ensemble sonuçları görsellenir ve kaydedilir.
-    
-```bash
-mass_inference.py --model_enum ${MODEL_NUMBERS}--img_path ${IMAGE_FOLDER_PATH} --enable_ensemble ${BOOLEAN}
-```
-  
-* Model çıktılarına verilen IoU eşik değerinde NMS uygulanır. Model sonuçları görsellenir ve kaydedilir.
-
-```bash
-mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --nms_iou_threshold ${FLOAT}
-```
-
-* Model çıktılarına verilen confidence eşik değerinde eliminasyon yapılır. Model sonuçları görsellenir ve kaydedilir.
-    
-```bash
-mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --confidence_threshold ${FLOAT}
-```
-
-* TP olarak kabul edilecek IoU eşik değeri seçilir. Model çıktı metrikleri bu parametre ile hesaplanır.
-
-```bash
-mass_inference.py --model_enum ${MODEL_NUMBERS} --img_path ${IMAGE_FOLDER_PATH} --annotation_path ${ANNOTATION_PATH} --ap_threshold ${FLOAT}
+mass_inference.py --model_enum 2 4 5 7 9 --img_path test/imgs_path/ --enable_ensemble --nms_iou_threshold 0.1 --confidence_threshold 0.33 --ap_threshold 0.5
 ```
 
 ## License
