@@ -1,5 +1,7 @@
 <div align="center" markdown="1">
-<center><h1> DIGITAL EYE for MAMMOGRAPHY (DEM) </h1></center>
+<img src="https://cbddo.gov.tr/assets/img/footerlogo_en.png" width="600"/>
+
+**<center><h1> DIGITAL EYE for MAMMOGRAPHY (DEM) </h1></center>**
 
 **Transfer learning and ensemble-ready deep learning SOTA object detection models for breast cancer detection.** [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Transfer%20learning%20and%20ensemble-ready%20deep%20learning%20SOTA%20object%20detection%20models%20for%20breast%20cancer%20detection%20repository&url=https://github.com/ddobvyz/digitaleye-mammography&via=dijital&hashtags=DigitalEye,AI,BreastCancer,EarlyDiagnosis,OpenSource)
 </div>
@@ -18,7 +20,7 @@
   <img src="https://img.shields.io/badge/python-3.8-blue" />
   <img src="https://img.shields.io/badge/pytorch-1.12.1-blue" />
   <a href="https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1" ><img src="https://img.shields.io/badge/pre--trained%20models-11-brightgreen" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/slack-community-blueviolet" /></a>
+  <a href="https://join.slack.com/t/supergradients-comm52/shared_invite/zt-10vz6o1ia-b_0W5jEPEnuHXm087K~t8Q"><img src="https://img.shields.io/badge/slack-community-blueviolet" /></a>
   <a href="https://github.com/ddobvyz/digitaleye-mammography/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GNU/GPLv3-blue" /></a>
  </p>   
 </div>   
@@ -49,7 +51,6 @@ Key features of DEM include:
 
 Results and models are available in the below. 
   
-    
 |   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
 | :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
 | <b> Faster R-CNN  | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.948 <br> 0.958 | 0.55 <br> 0.872 | 0.908 <br> 0.892 | 0.9  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v1/fasterrcnn.pth) |
@@ -65,10 +66,11 @@ Results and models are available in the below.
 | <b> DEDETR | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.966 <br> 0.967 | 1.235 <br> 1.797 | 0.941 <br> 0.914 | 0.927 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v1/deformable_detr.pth) |
 | <b> ENSEMBLE of BEST 3 MODELS <br> ATSS, DEDETR, FCOS | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.958 <br> 0.968 | 0.575 <br> 1.020 | 0.937 <br> 0.922 | 0.929 | --- |
 | <b> ENSEMBLE of ALL MODELS | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.953 <br> 0.971 | 0.573 <br> 1.033 | 0.928 <br> 0.918 | 0.923 | --- |
+    
 <p align="left">
   <img src="docs/12_v4.png" width="400" />
   <img src="docs/45_v4.png" width="400" /> 
-</p>    
+</p>   
 
 ## **Installation**
 
@@ -106,7 +108,7 @@ The parameters for running the DEM toolkit in the terminal are provided below.
     
 ```--enable_ensemble: ``` applies ensemble *(Optional Parameter, Default: False)*
 
-```--annotation_path: ``` annotation path for test images *(Optional Parameter, Default: None)* 
+```--annotation_path: ``` annotation path for test images *(Optional Parameter, Default: None)* [Annotation file format from MMDetection](https://mmdetection.readthedocs.io/en/dev-3.x/advanced_guides/customize_dataset.html#an-example-of-customized-dataset)
     
 ```--nms_iou_threshold: ``` applies nms threshold to model results for post-processing (Optional Parameter, Default: 0.1)*
     
