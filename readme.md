@@ -64,51 +64,56 @@ Results and models are available in the below.
 | <b> ATSS | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.954 <br> 0.965 | 0.941 <br> 1.259 | 0.916 <br> 0.906 | 0.911 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v1/atss.pth) |
 | <b> DETR | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.941 <br> 0.969 | 0.493 <br> 1.025 | 0.913 <br> 0.899 | 0.906 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v1/detr.pth) |
 | <b> DEDETR | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.966 <br> 0.967 | 1.235 <br> 1.797 | 0.941 <br> 0.914 | 0.927 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v1/deformable_detr.pth) |
-
-<p>
+| <b> ENSEMBLE of BEST 3 MODELS <br> ATSS, DEDETR, FCOS | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.958 <br> 0.968 | 0.575 <br> 1.020 | 0.937 <br> 0.922 | 0.929 | --- |
+| <b> ENSEMBLE of ALL MODELS | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.953 <br> 0.971 | 0.573 <br> 1.033 | 0.928 <br> 0.918 | 0.923 | --- |
+<p align="center">
   <img src="docs/12_v4.png" width="350" />
   <img src="docs/45_v4.png" width="350" /> 
 </p>   
 
 ## **Installation**
-    
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## [KULLANIM](#getting-started)
+## **Getting Started**
 
-### KOMUT SATIRI ARGÜMANLARI    
-    
-Kodun çalıştırılması için kullanılan parametreler aşağıda gösterilmektedir.
+The parameters for running the DEM toolkit in the terminal are provided below. 
 
-```--model_enum:``` Kullanıcının model seçimini ifade eder.. (<b>Required Parameter,</b> Kullanıcı tarafından hangi modelin/modellerin kullanılacağı belirtilmelidir.) <br>
-    <b>    
-    {'0': 'ATSS',
-     '1': 'CASCADE R-CNN',
-     '2': 'DEFORMABLE DETR',
-     '3': 'DETR',
-     '4': 'DOUBLEHEAD R-CNN',
-     '5': 'DYNAMIC R-CNN',
-     '6': 'FASTER R-CNN',
-     '7': 'FCOS',
-     '8': 'RETINANET',
-     '9': 'VARIFOCALNET',
-     '10': 'YOLOv3'
+```--model_enum:``` represents the user's model selection *(Required Parameter)*
+```python
+    {0: 'ATSS'
+     1: 'CASCADE R-CNN'
+     2: 'DEFORMABLE DETR'
+     3: 'DETR'
+     4: 'DOUBLEHEAD R-CNN'
+     5: 'DYNAMIC R-CNN'
+     6: 'FASTER R-CNN'
+     7: 'FCOS'
+     8: 'RETINANET'
+     9: 'VARIFOCALNET'
+     10: 'YOLOv3'
     }
-    </b> 
+```
     
-```--img_path: ``` Modellerin test edilmesi için gerekli mamografi görüntülerini içeren klasör yolunu ifade eder. (<b>Required Parameter</b>)<br>
-```--device:``` Modellerin hangi donanım üzerinde çalışacağı seçilir. (<b>Optional Parameter,</b> Default <b> 'cpu' </b> olarak setlenmiştir.) <br>
-```--classify_mass:``` Mamografi görüntülerinde modellerin, kitle tespiti veya kitle sınıflandırılması seçimini ifade eder. (<b>Optional Parameter,</b> Default <b>True</b> olarak setlenmiştir.) <br>
-```--segment_breast: ``` Mamografi görüntülerinde meme bölgesine odaklanılması için segmentasyon modelinin çalışmasını ifade eder. (<b>Optional Parameter,</b> Default <b>True</b> olarak setlenmiştir.) <br>
-```--enable_ensemble: ``` Modellerin ürettiği sonuçlara ensemble uygulanıp uygulanamayacağını ifade eder. <b>Optional Parameter,</b> Default <b>False</b> olarak setlenmiştir. <br>
+```--img_path: ``` file path for test images *(Required Parameter)*
+    
+```--device:``` running device *(Optional Parameter, Default: 'cpu')*
+    
+```--classify_mass:``` mass classification flag *(Optional Parameter, Default: True)*
+    
+```--segment_breast: ``` Mamografi görüntülerinde meme bölgesine odaklanılması için segmentasyon modelinin çalışmasını ifade eder. *(Optional Parameter, Default True olarak setlenmiştir.)*
+    
+```--enable_ensemble: ``` Modellerin ürettiği sonuçlara ensemble uygulanıp uygulanamayacağını ifade eder. *(Optional Parameter, Default  False olarak setlenmiştir.)*
 
-```--annotation_path: ``` Verilen mamografi görüntüleri için ground truth annotation yolunu ifade eder. (Optional) <b>Optional Parameter,</b> Default <b>None</b> olarak setlenmiştir. <br>
-```--nms_iou_threshold: ``` Model çıktılarına NMS uygulanması için gerekli IoU değerini ifade eder. <b>Optional Parameter,</b> Default <b>0.1</b> olarak setlenmiştir. <br>
-```--confidence_threshold: ``` Model çıktılarına skor eliminasyonu için gerekli skor değerini ifade eder. <b>Optional Parameter,</b> Default <b>0.05</b> olarak setlenmiştir. <br>
-```--ap_threshold: ``` Model çıktılarının ground truth ile kesişim eşik değerinin TP olarak değerlendirilmesi için gerekli olan IoU değerini ifade eder. <b>Optional Parameter,</b> Default <b>0.1</b> olarak setlenmiştir. <br>
+```--annotation_path: ``` Verilen mamografi görüntüleri için ground truth annotation yolunu ifade eder. *(Optional Parameter, Default None olarak setlenmiştir.)* 
+    
+```--nms_iou_threshold: ``` Model çıktılarına NMS uygulanması için gerekli IoU değerini ifade eder. (Optional Parameter, Default 0.1 olarak setlenmiştir.)*
+    
+```--confidence_threshold: ``` Model çıktılarına skor eliminasyonu için gerekli skor değerini ifade eder. (Optional Parameter, Default 0.05 olarak setlenmiştir.)* 
+    
+```--ap_threshold: ``` Model çıktılarının ground truth ile kesişim eşik değerinin TP olarak değerlendirilmesi için gerekli olan IoU değerini ifade eder. *(Optional Parameter, Default 0.1 olarak setlenmiştir.)* 
 
 ### KULLANIM ÖRNEKLERİ    
 
