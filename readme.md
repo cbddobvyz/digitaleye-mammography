@@ -11,7 +11,7 @@
   <a href="https://cbddo.gov.tr/en/projects/digital-eye-project/">Website</a> •
   <a href="#installation">Installation</a> •
   <a href="#getting-started">Getting Started</a> •
-  <a href="#implemented-model-architectures">Benchmarks</a> •
+  <a href="#benchmarks">Benchmarks</a> •
   <a href="#community">Community</a> •
   <a href="#license">License</a> •
   <a href="#disclaimer">Disclaimer</a> 
