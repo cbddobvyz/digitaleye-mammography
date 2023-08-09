@@ -20,7 +20,7 @@
   <img src="https://img.shields.io/badge/python-3.8-blue" />
   <img src="https://img.shields.io/badge/pytorch-1.12.1-blue" />
   <a href="https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1" ><img src="https://img.shields.io/badge/pre--trained%20models-11-brightgreen" /></a>
-  <a href="https://join.slack.com/t/supergradients-comm52/shared_invite/zt-10vz6o1ia-b_0W5jEPEnuHXm087K~t8Q"><img src="https://img.shields.io/badge/slack-community-blueviolet" /></a>
+  <a href=""><img src="https://img.shields.io/badge/slack-community-blueviolet" /></a>
   <a href="https://github.com/ddobvyz/digitaleye-mammography/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GNU/GPLv3-blue" /></a>
  </p>   
 </div>   
