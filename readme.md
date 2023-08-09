@@ -128,13 +128,13 @@ python mass_inference.py --model_enum 3 8 10 --img_path test/img_paths/ --classi
 * Mass classification and comparison against ground truth objects are performed on non-breast segmented images using ATSS, CASCADE R-CNN, and FASTER R-CNN models with various thresholds including non-maximum suppression (NMS), confidence, and average precision (AP).
 
 ```bash 
-mass_inference.py --model_enum 0 6 1 --img_path test/imgs_path/ --segment_breast False --annotation_path test/annot_path.txt --nms_iou_threshold 0.25 --confidence_threshold 0.5 --ap_threshold 0.1
+python mass_inference.py --model_enum 0 6 1 --img_path test/imgs_path/ --segment_breast False --annotation_path test/annot_path.txt --nms_iou_threshold 0.25 --confidence_threshold 0.5 --ap_threshold 0.1
 ```    
 
 * Mass classification and model ensemble using DEFORMABLE DETR, DOUBLEHEAD R-CNN, DYNAMIC R-CNN, FCOS, VARIFOCAL NET models with various thresholds.
 
 ```bash 
-mass_inference.py --model_enum 2 4 5 7 9 --img_path test/imgs_path/ --enable_ensemble --nms_iou_threshold 0.1 --confidence_threshold 0.33 --ap_threshold 0.5
+python mass_inference.py --model_enum 2 4 5 7 9 --img_path test/imgs_path/ --enable_ensemble --nms_iou_threshold 0.1 --confidence_threshold 0.33 --ap_threshold 0.5
 ```
 
 ## License
