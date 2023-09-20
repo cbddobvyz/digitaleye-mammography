@@ -1,5 +1,5 @@
 <div align="center" markdown="1">
-<img src="docs/sayısal göz-banner kopya.jpeg" width="600"/>
+<img src="docs/sayısal göz-banner2.jpeg" width="600"/>
 
 **<center><h1> DIGITAL EYE for MAMMOGRAPHY (DEM) </h1></center>**
 
