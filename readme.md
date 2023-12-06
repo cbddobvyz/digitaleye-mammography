@@ -135,6 +135,10 @@ python mass_inference.py --model_enum 0 6 1 --img_path test/imgs_path/ --segment
 python mass_inference.py --model_enum 2 4 5 7 9 --img_path test/imgs_path/ --enable_ensemble --nms_iou_threshold 0.1 --confidence_threshold 0.33 --ap_threshold 0.5
 ```
 
+## To-Do Lists
+
+- [ ] MMDetection 2.0 to MMDetection 3.0
+
 ## License
       
 This project is released under the [GNU/GPLv3](https://github.com/ddobvyz/digitaleye-mammography/blob/main/LICENSE)
