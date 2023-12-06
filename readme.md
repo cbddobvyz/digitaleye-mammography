@@ -47,7 +47,7 @@ Key features of DEM include:
 
 ## **Benchmarks**
 
-Results and models are available in the below. 
+Results and models are available in the below. Models can also be downloaded from [the release](https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1)
   
 |   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
 | :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
