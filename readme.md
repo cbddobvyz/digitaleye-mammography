@@ -135,9 +135,14 @@ python mass_inference.py --model_enum 0 6 1 --img_path test/imgs_path/ --segment
 python mass_inference.py --model_enum 2 4 5 7 9 --img_path test/imgs_path/ --enable_ensemble --nms_iou_threshold 0.1 --confidence_threshold 0.33 --ap_threshold 0.5
 ```
 
-## To-Do Lists
+## To-Do
 
-- [ ] MMDetection 2.0 to MMDetection 3.0
+- [ ] Migrating from MMDetection 2.x to 3.x
+- [ ] Migrating from PyTorch 1.x to 2.x
+
+## Acknowledgements
+
+This work was supported by Digital Transformation Office of the Presidency of Republic of Türkiye. We would like to thanks Republic of Türkiye Ministry of Health for sharing anonymized KETEM dataset and their valuable support.
 
 ## License
       
@@ -156,9 +161,7 @@ THE CONTENT OF REPOSITORY IS PROVIDED FOR INFORMATION PURPOSES ONLY. NO CLAIM IS
 To be added...    
 
     
-## Acknowledgements
 
-This work was supported by Digital Transformation Office of the Presidency of Republic of Türkiye. We would like to thanks Republic of Türkiye Ministry of Health for sharing anonymized KETEM dataset and their valuable support.
 
     
 
