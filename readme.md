@@ -14,6 +14,7 @@
   <a href="#benchmarks">Benchmarks</a> •
   <a href="#license">License</a> •
   <a href="#disclaimer">Disclaimer</a> 
+  <a href="#acknowledgements">Acknowledgements</a> 
 </p>
  <p align="center">
   <img src="https://img.shields.io/badge/python-3.8-blue" />
