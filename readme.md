@@ -13,7 +13,7 @@
   <a href="#getting-started">Getting Started</a> •
   <a href="#benchmarks">Benchmarks</a> •
   <a href="#license">License</a> •
-  <a href="#disclaimer">Disclaimer</a> 
+  <a href="#disclaimer">Disclaimer</a> •
   <a href="#acknowledgements">Acknowledgements</a> 
 </p>
  <p align="center">
