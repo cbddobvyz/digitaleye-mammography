@@ -19,6 +19,7 @@
  <p align="center">
   <img src="https://img.shields.io/badge/python-3.8-blue" />
   <img src="https://img.shields.io/badge/pytorch-1.12.1-blue" />
+  <img src="https://img.shields.io/badge/mmdetection-2.28.2-blue" />
   <a href="https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1" ><img src="https://img.shields.io/badge/pre--trained%20models-11-brightgreen" /></a>
   <a href="https://github.com/ddobvyz/digitaleye-mammography/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GNU/GPLv3-blue" /></a>
  </p>   
