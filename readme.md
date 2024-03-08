@@ -3,7 +3,7 @@
 
 **<center><h1> DIGITAL EYE for MAMMOGRAPHY </h1></center>**
 
-**The Digital Eye for Mammography: Deep Transfer Learning and Model Ensemble based Open-Source Toolkit for Mass Detection and Classification.** [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=The%20Digital%20Eye%20for%20Mammography%20:%20Deep%20Transfer%20Learning%20and%20Model%20Ensemble%20based%20Open-Source%20Toolkit%20for%20Mass%20Detection%20and%20Classification%20repository.&url=https://github.com/ddobvyz/digitaleye-mammography&via=dijital&hashtags=DigitalEye,AI,BreastCancer,EarlyDiagnosis,OpenSource)
+**The Digital Eye for Mammography: Deep Transfer Learning and Model Ensemble based Open-Source Toolkit for Mass Detection and Classification.** [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=The%20Digital%20Eye%20for%20Mammography%20:%20Deep%20Transfer%20Learning%20and%20Model%20Ensemble%20based%20Open-Source%20Toolkit%20for%20Mass%20Detection%20and%20Classification%20repository.&url=https://github.com/cbddobvyz/digitaleye-mammography&via=dijital&hashtags=DigitalEye,AI,BreastCancer,EarlyDiagnosis,OpenSource)
 </div>
 
 <div align="center">
