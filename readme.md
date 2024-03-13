@@ -74,8 +74,11 @@ Results and models are available in the below. Models can also be downloaded fro
 
 ## **Installation**
 
+
+
 ```bash
 pip install -r requirements.txt
+mim install mmcv_full==1.7.1
 ```
 
 ## **Getting Started**
