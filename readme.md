@@ -50,6 +50,8 @@ Key features:
 ## **Benchmarks**
 
 Results and models are available in the below. Models can also be downloaded from [the releases.](https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1)
+
+[!CAUTION] The models to be downloaded must be under the "models" folder.
   
 |   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
 | :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
@@ -86,8 +88,6 @@ mim install mmcv_full==1.7.1
 ## **Getting Started**
 
 The parameters for running the toolkit in the terminal are provided below. 
-
-The models to be downloaded must be under the "models" folder.
 
 ```--model_enum:``` represents the user's model selection *(Required Parameter)*
 ```python
