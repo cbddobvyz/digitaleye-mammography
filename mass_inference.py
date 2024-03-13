@@ -29,7 +29,7 @@ parser.add_argument('--ap_threshold', type=float, help='Example: --ap_threshold 
 
 args = parser.parse_args()
 
-if len(glob.glob(os.path.join(args.img_path, '*.png'))) == 0:
+if len(glob.glob(os.path.join(args.img_path, '*.[pP][nN][gG]'))) == 0:
     print(args.img_path, 'not include any images... You must give image folder which contains images...')
     parser.print_help()
     exit(-1)
