@@ -98,7 +98,7 @@ The parameters for running the toolkit in the terminal are provided below.
     }
 ```
     
-```--img_path: ``` file path for test images *(Required Parameter)*
+```--img_path: ``` folder path for test images *(Required Parameter)*
     
 ```--device:``` running device *(Optional Parameter, Default: 'cpu')*
     
