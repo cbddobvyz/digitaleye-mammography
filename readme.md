@@ -74,9 +74,9 @@ Results and models are available in the below. Models can also be downloaded fro
 
 ## **Installation**
 
-Step 0. This application works torch 1.12.x and 10.2 <= cuda <= 11.6 between versions.
+**Step 0.** This application works torch 1.12.x and 10.2 <= cuda <= 11.6 between versions.
 
-Step 1. Install requirements and mmcv-full version.
+**Step 1.** Install requirements and mmcv-full version.
 
 ```bash
 pip install -r requirements.txt
