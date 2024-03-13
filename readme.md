@@ -74,7 +74,9 @@ Results and models are available in the below. Models can also be downloaded fro
 
 ## **Installation**
 
+Step 0. This application works torch 1.12.x and 10.2 <= cuda <= 11.6 between versions.
 
+Step 1. Install requirements and mmcv-full version.
 
 ```bash
 pip install -r requirements.txt
@@ -85,7 +87,7 @@ mim install mmcv_full==1.7.1
 
 The parameters for running the toolkit in the terminal are provided below. 
 
-The models to be downloaded must be under the models folder.
+The models to be downloaded must be under the "models" folder.
 
 ```--model_enum:``` represents the user's model selection *(Required Parameter)*
 ```python
