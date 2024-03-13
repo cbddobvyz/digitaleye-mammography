@@ -85,6 +85,8 @@ mim install mmcv_full==1.7.1
 
 The parameters for running the toolkit in the terminal are provided below. 
 
+The models to be downloaded must be under the models folder.
+
 ```--model_enum:``` represents the user's model selection *(Required Parameter)*
 ```python
     {0: 'ATSS'
