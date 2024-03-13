@@ -104,7 +104,7 @@ The parameters for running the toolkit in the terminal are provided below.
     
 ```--classify_mass:``` mass classification flag, if True it classifies mass as benign or malignant otherwise only mass detection performs *(Optional Parameter, Default: True)*
     
-```--segment_breast: ``` breast segmentation for pre-processing *(Optional Parameter, Default: True)* [Breast Segmentation Model Download](https://github.com/cbddobvyz/digitaleye-mammography/releases/download/shared-models.v1/ResUNet_breast.pth)
+```--segment_breast: ``` breast segmentation for pre-processing *(Optional Parameter, Default: True)* [Download link for breast segmentation model](https://github.com/cbddobvyz/digitaleye-mammography/releases/download/shared-models.v1/ResUNet_breast.pth)
     
 ```--enable_ensemble: ``` applies ensemble *(Optional Parameter, Default: False)*
 
