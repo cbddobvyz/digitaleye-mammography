@@ -51,7 +51,7 @@ Key features:
 
 Results and models are available in the below. Models can also be downloaded from [the releases.](https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1)
 
-:warning: **WARNING :** The models to be downloaded must be under the "models" folder.
+:exclamation: **The models must be under the "models" folder.**
   
 |   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
 | :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
