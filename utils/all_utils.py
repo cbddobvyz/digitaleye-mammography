@@ -234,6 +234,12 @@ def apply_segmentation(seg_img_path, img_path, device):
     
     img_list = sorted(glob.glob(os.path.join(img_path, '*')))
     path = os.path.join(os.path.sep, os.path.abspath("."),'models','ResUNet_breast.pth')
+    segmodel_name = os.path.basename(path)
+    if not os.path.exists(path):
+        print(segmodel_name.split('.pth')[0]+' segmentation model is being downloaded. Wait.')
+        url = 'https://github.com/cbddobvyz/digitaleye-mammography/releases/download/shared-models.v1/'+segmodel_name
+        wget.download(url, out='models/')
+        print(segmodel_name.split('.pth')[0]+' model downloaded. It is estimated.')
     seg_model = torch.load(path, map_location=torch.device(device))
     print('Applying segmentation to images')
     crop_coordinates = []
@@ -479,7 +485,7 @@ def get_model_predicts(config, checkpoint, img_list, class_size, device):
         print(model_name.split('.pth')[0]+' model is being downloaded. Wait.')
         url = 'https://github.com/cbddobvyz/digitaleye-mammography/releases/download/shared-models.v1/'+model_name
         wget.download(url, out='models/')
-    print(model_name.split('.pth')[0]+' model downloaded. It is estimated.')
+        print(model_name.split('.pth')[0]+' model downloaded. It is estimated.')
     results = []
     model = init_detector(config, checkpoint, device)
     for j in img_list:
