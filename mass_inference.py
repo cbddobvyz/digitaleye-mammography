@@ -29,6 +29,10 @@ parser.add_argument('--ap_threshold', type=float, help='Example: --ap_threshold 
 
 args = parser.parse_args()
 
+models_path = 'models/'
+if not os.path.exists(models_path):
+    os.mkdir(models_path)
+
 if len(glob.glob(os.path.join(args.img_path, '*.[pP][nN][gG]'))) == 0:
     print(args.img_path, 'not include any images... You must give image folder which contains images...')
     parser.print_help()
@@ -89,6 +93,7 @@ model_predicts = []
 df_dict = {}
 for i in range(len(config_paths)): 
     print('*'*20, selected_model_names[i], 'model evaluation processes are starting...', '*'*20)
+
     results = get_model_predicts(config_paths[i], model_file_paths[i], img_list, class_size, device)
     results = get_nms_results(results, img_list, class_size, args.nms_iou_threshold, scr_thr=args.confidence_threshold)
     if class_size == 2:

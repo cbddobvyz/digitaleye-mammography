@@ -1,5 +1,6 @@
-import sys
 import os
+import sys
+import wget
 from inspect import getsourcefile
 from os.path import abspath
 sys.path.append(os.path.dirname(os.path.realpath(sys.argv[0])) + '/utils')
@@ -11,7 +12,6 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import mmcv
 from tqdm import tqdm
 import numpy as np
 import mammoggraphy_preprocess as mam_pre
@@ -32,7 +32,6 @@ from sklearn.metrics import auc
 from seg_utils import *
 
 warnings.filterwarnings("ignore")
-
 
 def get_choosen_models(current_dir, results_dir, model_names):
     """
@@ -475,7 +474,12 @@ def get_model_predicts(config, checkpoint, img_list, class_size, device):
         model detections
 
     """
-    
+    model_name = os.path.basename(checkpoint)
+    if not os.path.exists(checkpoint):
+        print(model_name.split('.pth')[0]+' model is being downloaded. Wait.')
+        url = 'https://github.com/cbddobvyz/digitaleye-mammography/releases/download/shared-models.v1/'+model_name
+        wget.download(url, out='models/')
+    print(model_name.split('.pth')[0]+' model downloaded. It is estimated.')
     results = []
     model = init_detector(config, checkpoint, device)
     for j in img_list:
