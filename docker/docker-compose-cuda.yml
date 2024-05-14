@@ -4,7 +4,7 @@ services:
   digitaleye:
     build: 
       context: .
-      dockerfile: Dockerfile-gpu
+      dockerfile: Dockerfile-cuda
     
     runtime: nvidia
 
