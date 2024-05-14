@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  digitaleye:
+    build: 
+      context: .
+      dockerfile: Dockerfile-gpu
+    
+    runtime: nvidia
+
+    ports:
+      - "8888:8888"
+
+    hostname: digitaleye-mammography

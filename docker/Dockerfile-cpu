@@ -1,0 +1,36 @@
+FROM ubuntu:22.04
+
+
+USER root
+EXPOSE 8888
+ENV HOSTNAME=digitaleye-mammography
+
+RUN apt -y update \
+    && apt install -y  \
+    sudo git python3-pip ca-certificates libssl-dev libffi-dev python3-dev build-essential\
+    && update-ca-certificates
+
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN adduser --disabled-password --gecos '' cbddobvyz \
+    && usermod -aG sudo cbddobvyz \
+    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER cbddobvyz
+WORKDIR /workpace
+
+RUN git clone https://github.com/cbddobvyz/digitaleye-mammography.git -b main /workpace
+
+ENV PATH="/home/cbddobvyz/.local/bin:${PATH}"
+
+RUN python3 -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org \
+    --upgrade pip \
+    -r requirements.txt \
+    opencv-contrib-python-headless==4.7.0.72 \
+    jupyterlab
+
+RUN mim install mmcv_full==1.7.1
+
+
+CMD ["jupyter", "lab","--ip=0.0.0.0","--NotebookApp.allow_origin='*'","--port=8888", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''","--ServerApp.terminado_settings={\"shell_command\": [\"/bin/bash\"]}"]
+

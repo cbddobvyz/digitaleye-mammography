@@ -1,0 +1,38 @@
+FROM nvidia/cuda:11.7.1-devel-ubuntu22.04
+
+USER root
+EXPOSE 8888
+ENV HOSTNAME=digitaleye-mammography
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get -y update && apt-get install -y \
+    libxext6 libxrender-dev libncurses5-dev libncursesw5-dev \
+    apt-utils libcurl4 gcc g++ git curl wget nano \
+    iputils-ping cmake sudo htop unrar unzip libsm6 tmux python3-pip \
+    gnupg software-properties-common ffmpeg python3-distutils
+
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN adduser --disabled-password --gecos '' cbddobvyz \
+    && usermod -aG sudo cbddobvyz \
+    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER cbddobvyz
+WORKDIR /workspace
+
+RUN git clone https://github.com/cbddobvyz/digitaleye-mammography.git -b main /workspace
+
+ENV PATH="/home/cbddobvyz/.local/bin:${PATH}"
+
+RUN python3 -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org \
+    --upgrade pip \
+    -r requirements.txt \
+    jupyterlab \
+    mmcv-full==1.7.0 -f https://download.openmmlab.com/mmcv/dist/cu116/torch1.12/index.html
+
+RUN python3 -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org opencv-contrib-python-headless==4.7.0.72 \
+    torch==1.12.1+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116 
+
+CMD ["jupyter", "lab","--ip=0.0.0.0","--NotebookApp.allow_origin='*'","--port=8888", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''","--ServerApp.terminado_settings={\"shell_command\": [\"/bin/bash\"]}"]
+
