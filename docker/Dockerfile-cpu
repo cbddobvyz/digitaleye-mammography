@@ -17,9 +17,9 @@ RUN adduser --disabled-password --gecos '' cbddobvyz \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER cbddobvyz
-WORKDIR /workpace
+WORKDIR /workspace
 
-RUN git clone https://github.com/cbddobvyz/digitaleye-mammography.git -b main /workpace
+RUN git clone https://github.com/cbddobvyz/digitaleye-mammography.git -b main /workspace
 
 ENV PATH="/home/cbddobvyz/.local/bin:${PATH}"
 
