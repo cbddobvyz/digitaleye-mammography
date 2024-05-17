@@ -76,7 +76,7 @@ Models can also be downloaded from [the releases.](https://github.com/ddobvyz/di
 
 ## **Installation**
 
-**Step 0.** This application works torch 1.12.x and 10.2 <= cuda <= 11.6 between versions.
+This application works torch 1.12.x and 10.2 <= cuda <= 11.6 between versions.
 
 **Step 1.** Clone repo
 
@@ -85,11 +85,13 @@ git clone https://github.com/cbddobvyz/digitaleye-mammography.git
 ```
 
 **Step 2.** Install requirements and mmcv-full version.
-
+    
 ```bash
 pip install -r requirements.txt
 mim install mmcv_full==1.7.1
 ```
+    
+<b>Note: To perform install using Docker, please review the [docker readme file](docker/readme.md) </b>
 
 ## **Getting Started**
 
