@@ -175,4 +175,4 @@ THE CONTENT OF REPOSITORY IS PROVIDED FOR INFORMATION PURPOSES ONLY. NO CLAIM IS
 
 ## Citation
 
-To be added...    
+Terzi, R., Kılıç, A.E., Karaahmetoğlu, G. et al. The digital eye for mammography: deep transfer learning and model ensemble based open-source toolkit for mass detection and classification. SIViP 19, 170 (2025)
