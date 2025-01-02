@@ -9,12 +9,13 @@
 <div align="center">
 <p align="center">
   <a href="https://cbddo.gov.tr/en/projects/digital-eye-project/">Website</a> •
+  <a href="#benchmarks">Benchmarks</a> •
   <a href="#installation">Installation</a> •
   <a href="#getting-started">Getting Started</a> •
-  <a href="#benchmarks">Benchmarks</a> •
+  <a href="#acknowledgements">Acknowledgements</a> •
+  <a href="#citation">Citation</a> •
   <a href="#license">License</a> •
   <a href="#disclaimer">Disclaimer</a> •
-  <a href="#acknowledgements">Acknowledgements</a> 
 </p>
  <p align="center">
   <img src="https://img.shields.io/badge/python-3.8-blue" />
@@ -91,7 +92,7 @@ pip install -r requirements.txt
 mim install mmcv_full==1.7.1
 ```
     
-<b>Note: To perform install using Docker, please review the [docker readme file](docker/readme.md) </b>
+<b>Note: To perform install using Docker, please review the [docker readme file](docker/readme.md). </b>
 
 ## **Getting Started**
 
@@ -161,6 +162,22 @@ python mass_inference.py --model_enum 2 4 5 7 9 --img_path test/imgs_path/ --ena
 
 This work was supported by Digital Transformation Office of the Presidency of Republic of Türkiye. We would like to thanks Republic of Türkiye Ministry of Health for sharing anonymized KETEM dataset and their valuable support.
 
+## Citation
+
+If you use this toolbox or benchmark in your research, please cite this project.
+
+```
+@article{terzi2025digital,
+  title={The digital eye for mammography: deep transfer learning and model ensemble based open-source toolkit for mass detection and classification},
+  author={Terzi, Ramazan and Kılıç, Ahmet Enes and Karaahmetoğlu, Gökhan and Özdemir, Okan Bilge},
+  journal={Signal, Image and Video Processing},
+  volume={19},
+  number={1},
+  pages={170},
+  year={2025},
+  publisher={Springer}
+}
+```
 ## License
       
 This project is released under the [GNU/GPLv3](https://github.com/ddobvyz/digitaleye-mammography/blob/main/LICENSE)
@@ -172,7 +189,3 @@ THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
 THIS REPOSITORY DOES NOT PROVIDE MEDICAL ADVICE. THE INFORMATION, INCLUDING BUT NOT LIMITED TO, TEXT, GRAPHICS, IMAGES, AND OTHER MATERIAL CONTAINED ON THIS REPOSITORY ARE FOR INFORMATIONAL PURPOSES ONLY. NO MATERIAL ON THIS REPOSITORY IS INTENDED TO BE A SUBSTITUTE FOR PROFESSIONAL MEDICAL ADVICE, DIAGNOSIS, OR TREATMENT. ALWAYS SEEK THE ADVICE OF YOUR PHYSICIAN OR OTHER QUALIFIED HEALTH CARE PROVIDER WITH ANY QUESTIONS YOU MAY HAVE REGARDING A MEDICAL CONDITION OR TREATMENT, AND NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY IN SEEKING IT BECAUSE OF SOMETHING YOU HAVE READ ON THIS REPOSITORY.
       
 THE CONTENT OF REPOSITORY IS PROVIDED FOR INFORMATION PURPOSES ONLY. NO CLAIM IS MADE AS TO THE ACCURACY OR CURRENCY OF THE CONTENT ON THIS REPOSITORY AT ANY TIME. THE DIGITAL TRANSFORMATION OFFICE DOES NOT ACCEPT ANY LIABILITY TO ANY PERSON/INSTITUTION/ORGANIZATION FOR THE INFORMATION OR MODEL (OR THE USE OF SUCH INFORMATION OR MODEL) WHICH IS PROVIDED ON THIS REPOSITORY OR INCORPORATED INTO IT BY REFERENCE.
-
-## Citation
-
-Terzi, R., Kılıç, A.E., Karaahmetoğlu, G. et al. The digital eye for mammography: deep transfer learning and model ensemble based open-source toolkit for mass detection and classification. SIViP 19, 170 (2025)
