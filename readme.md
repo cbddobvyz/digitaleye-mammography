@@ -164,7 +164,7 @@ This work was supported by Digital Transformation Office of the Presidency of Re
 
 ## Citation
 
-If you use this toolbox or benchmark in your research, please cite this project.
+If you use this toolbox or benchmark in your research, please cite this paper.
 
 ```
 @article{terzi2025digital,
