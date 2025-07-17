@@ -21,7 +21,8 @@
   <img src="https://img.shields.io/badge/python-3.8-blue" />
   <img src="https://img.shields.io/badge/pytorch-1.12.1-blue" />
   <img src="https://img.shields.io/badge/mmdetection-2.28.2-blue" />
-  <a href="https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1" ><img src="https://img.shields.io/badge/pre--trained%20models-11-brightgreen" /></a>
+  <img src="https://img.shields.io/badge/ultralytics-8.3.6-blue" />
+  <a href="https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v1" ><img src="https://img.shields.io/badge/pre--trained%20models-31-brightgreen" /></a>
   <a href="https://github.com/ddobvyz/digitaleye-mammography/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GNU/GPLv3-blue" /></a>
  </p>   
 </div>   
@@ -42,13 +43,59 @@ Key features:
 
 * **Boost Performance with Ensemble Models:** With various strategies, this project allows you to combine outputs from different deep learning architectures, enhancing the overall performance.
 
-* **Compatible with MMDetection:** This project plays well with [MMdetection](https://github.com/open-mmlab/mmdetection), making it effortless to use and open to developers for adding new features.
+* **Compatible with MMDetection and Ultralytics:** This project plays well with [MMdetection](https://github.com/open-mmlab/mmdetection) and [Ultralytics](https://docs.ultralytics.com/), making it effortless to use and open to developers for adding new features.
 
 * **Visualize and Compare Model Results:** Get a visual representation of your model's performance and generate detailed comparison reports. Calculate scientific metrics like True Positive Rate (TPR), Average Precision (AP) for each class, and mean Average Precision (mAP).
 
 * **Open-Source and Accessible:** This toolkit is available as an open-source project, fostering collaboration and enabling developers to contribute and benefit from its features.
 
 ## **Benchmarks**
+
+### **Ultralytics YOLO Benchmarks**
+
+Benchmark of YOLO object detection models (<b>YOLOv8</b>, <b>YOLOv9</b>, <b>YOLOv10</b>, <b>YOLOv11</b>) which trained on the private mammography dataset KETEM are available in the below. Models can also be downloaded from [the releases.](https://github.com/ddobvyz/digitaleye-mammography/releases/tag/shared-models.v2)
+    
+#### **YOLOv11 Benchmarks**
+
+|   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
+| :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
+| <b> YOLO11n  | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.765 <br> 0.764 | 0.076 <br> 0.382 | 0.867 <br> 0.815 | 0.841  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo11_n.pt) |
+| <b> YOLO11s | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.8 <br> 0.757 | 0.086 <br> 0.355 | 0.864 <br> 0.82 | 0.842 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo11_s.pt) |
+| <b> YOLO11m | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.799 <br> 0.776 | 0.069 <br> 0.357 | 0.881 <br> 0.825 | 0.853  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo11_m.pt) |
+| <b> YOLO11l | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.811 <br> 0.772 | 0.091 <br> 0.325 | 0.88 <br> 0.834 | 0.857 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo11_l.pt) |
+| <b> YOLO11x | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.794 <br> 0.766 | 0.07 <br> 0.358 | 0.88 <br> 0.831 | 0.856 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo11_x.pt) |
+    
+#### **YOLOv10 Benchmarks**
+  
+|   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
+| :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
+| <b> YOLOv10n  | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.794 <br> 0.73 | 0.095 <br> 0.292 | 0.856 <br> 0.810 | 0.833  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo10_n.pt) |
+| <b> YOLOv10s | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.789 <br> 0.741 | 0.086 <br> 0.316 | 0.857 <br> 0.814 | 0.836 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo10_s.pt) |
+| <b> YOLOv10m | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.802 <br> 0.748 | 0.08 <br> 0.306 | 0.864 <br> 0.826 | 0.845  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo10_m.pt) |
+| <b> YOLOv10l | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.818 <br> 0.764 | 0.066 <br> 0.297 | 0.874 <br> 0.826 | 0.85 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo10_l.pt) |
+| <b> YOLOv10x | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.806 <br> 0.761 | 0.07 <br> 0.295 | 0.87 <br> 0.82 | 0.845 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo10_x.pt) |
+
+#### **YOLOv9 Benchmarks**
+  
+|   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
+| :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
+| <b> YOLOv9n  | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.789 <br> 0.765 | 0.075 <br> 0.37 | 0.873 <br> 0.819 | 0.846  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_n.pt) |
+| <b> YOLOv9s | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.798 <br> 0.771 | 0.079 <br> 0.356 | 0.873 <br> 0.822 | 0.848 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_s.pt) |
+| <b> YOLOv9m | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.784 <br> 0.777 | 0.077 <br> 0.346 | 0.87 <br> 0.836 | 0.853  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_m.pt) |
+| <b> YOLOv9c | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.785 <br> 0.786 | 0.082 <br> 0.376 | 0.873 <br> 0.835 | 0.854 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_c.pt) |
+| <b> YOLOv9e | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.798 <br> 0.777 | 0.084 <br> 0.345 | 0.879 <br> 0.839 | 0.859 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_e.pt) |
+    
+#### **YOLOv8 Benchmarks**
+  
+|   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
+| :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
+| <b> YOLOv8n  | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.788 <br> 0.769 | 0.077 <br> 0.399 | 0.873 <br> 0.803 | 0.838  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo8_n.pt) |
+| <b> YOLOv8s | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.805 <br> 0.774 | 0.089 <br> 0.373 | 0.871 <br> 0.825 | 0.848 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo8_s.pt) |
+| <b> YOLOv8m | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.789 <br> 0.763 | 0.081 <br> 0.359 | 0.873 <br> 0.829 | 0.851  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo8_m.pt) |
+| <b> YOLOv8l | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.805 <br> 0.765 | 0.08 <br> 0.361 | 0.871 <br> 0.823 | 0.847 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo8_l.pt) |
+| <b> YOLOv8x | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.799 <br> 0.774 | 0.073 <br> 0.355 | 0.882 <br> 0.83 | 0.856 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo8_x.pt) |
+    
+### **MMdetection Benchmarks**
 
 Results and models are available in the below. Models will be automatically downloaded according to the selected model when running.
 
@@ -93,6 +140,8 @@ mim install mmcv_full==1.7.1
 ```
     
 <b>Note: To perform install using Docker, please review the [docker readme file](docker/readme.md). </b>
+    
+**For using YOLO models please refer to [Ultralytics Docs](https://docs.ultralytics.com/).** 
 
 ## **Getting Started**
 
@@ -152,11 +201,6 @@ python mass_inference.py --model_enum 0 6 1 --img_path test/imgs_path/ --segment
 ```bash 
 python mass_inference.py --model_enum 2 4 5 7 9 --img_path test/imgs_path/ --enable_ensemble --nms_iou_threshold 0.1 --confidence_threshold 0.33 --ap_threshold 0.5
 ```
-
-## To-Do
-
-- [ ] Migrating from MMDetection 2.x to 3.x
-- [ ] Migrating from PyTorch 1.x to 2.x
 
 ## Acknowledgements
 
