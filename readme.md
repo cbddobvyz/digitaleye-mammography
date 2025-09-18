@@ -79,7 +79,7 @@ Benchmark of YOLO object detection models (<b>YOLOv8</b>, <b>YOLOv9</b>, <b>YOLO
   
 |   Model | Class | TPR | FPPI | AP | mAP | Checkpoints |
 | :------: | :-----------: | :-------: | :-----------: | :---------------: | :---------: | :---------: |
-| <b> YOLOv9n  | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.789 <br> 0.765 | 0.075 <br> 0.37 | 0.873 <br> 0.819 | 0.846  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_n.pt) |
+| <b> YOLOv9t  | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.789 <br> 0.765 | 0.075 <br> 0.37 | 0.873 <br> 0.819 | 0.846  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_t.pt) |
 | <b> YOLOv9s | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.798 <br> 0.771 | 0.079 <br> 0.356 | 0.873 <br> 0.822 | 0.848 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_s.pt) |
 | <b> YOLOv9m | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.784 <br> 0.777 | 0.077 <br> 0.346 | 0.87 <br> 0.836 | 0.853  | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_m.pt) |
 | <b> YOLOv9c | BI-RADS 4-5 <br> BI-RADS 1-2 | 0.785 <br> 0.786 | 0.082 <br> 0.376 | 0.873 <br> 0.835 | 0.854 | [checkpoint](https://github.com/ddobvyz/digitaleye-mammography/releases/download/shared-models.v2/yolo9_c.pt) |
